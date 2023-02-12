@@ -34,6 +34,22 @@
     </div>
   </template>
   
+  <style scoped>
+  .table td {
+    padding: 0.5rem;
+    vertical-align: top;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    background-color: rgb(7, 135, 239);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  </style>
+
   <script>
   export default {
     props: {

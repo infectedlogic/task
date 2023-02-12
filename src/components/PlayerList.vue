@@ -44,15 +44,50 @@
   </div>
 </template>
 <style scoped>
-.btn{
-  border-radius : 25px;
-}
-.btn-secondary{
-  background : rgb(9, 166, 219);
-  color :white;
-}
-
+  .form-group {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .form-group select,
+  .form-group input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  th {
+    background-color: #eee;
+  }
+  
+  button.btn {
+    padding: 10px 20px;
+    background-color: rgb(7, 135, 239);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 </style>
+
 <script>
 import axios from 'axios';
 
@@ -60,7 +95,7 @@ export default {
   data() {
     return {
       players: [],
-      sortBy: 'Rank',
+      sortBy: 'id',
       filterBy: 'Rank',
       filterValue: ''
     }
@@ -73,7 +108,7 @@ export default {
           return player[this.filterBy].toString().toLowerCase()==(this.filterValue.toLowerCase());
         });
       }
-      return filteredPlayers.sort((a, b) => a[this.sortBy] - b[this.sortBy]);
+      return filteredPlayers.sort((a, b) => b[this.sortBy] - a[this.sortBy]);
     }
   },
   mounted() {
@@ -87,7 +122,7 @@ export default {
   },
   methods: {
     sortPlayers() {
-      this.players = this.players.sort((a, b) => a[this.sortBy] - b[this.sortBy]);
+      this.players = this.players.sort((a, b) => b[this.sortBy] - a[this.sortBy]);
     },
     filterPlayers() {
       this.players = this.players.sort((a, b) => a[this.sortBy] - b[this.sortBy]);
